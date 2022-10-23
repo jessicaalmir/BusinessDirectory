@@ -1,0 +1,66 @@
+@using GroupB_A2.Data
+@model GroupB_A2.Models.Business
+@{
+    ViewData["Title"] = "Create";
+}
+<h4 class="text-center">Add New Business</h4>
+<hr />
+<div class="row"><a asp-controller="Business" asp-action="Index"  title="Back to List"><img class="list-icon" src="/Images/Icons/icons8-back-64.png" alt=""/>
+                                             </a></div>
+<div class="row">
+    <div class="col-md-4 text-center">
+        @using (Html.BeginForm("Create", "Business", FormMethod.Post,new{name ="form1"}))
+        {
+            <div class="container text-danger">
+                @Html.ValidationSummary(false)
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Name)
+                </div>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(b => b.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Category,"Category")
+                </div>
+                <div class="col-lg-6">
+                    @*@Html.DropDownListFor(b=>b.CategoryID, (List<SelectListItem>)@ViewBag.CategoryList, "Select Category", new { @class ="form-control" })
+                    *@
+                    <select class="form-control" asp-items="@ViewBag.Category as SelectList" asp-for="CategoryID">
+                        <option>Select one Category</option>
+                    </select>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.NumberPhone, "Phone")
+                </div>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(b => b.NumberPhone, new { @class ="form-control" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Website)
+                </div>
+                <div class="col-lg-6">
+                    @Html.TextBoxFor(b => b.Website, new { @class ="form-control" })
+                </div>
+            </div>
+            <br/>
+            <div class="form-group">
+                <img src="/Images/Icons/icons8-save-40.png" title="Save" onclick="document.forms['form1'].submit();"/>
+            </div>
+        }
+    </div>
+</div>
+
+
+

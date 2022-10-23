@@ -1,0 +1,42 @@
+@model IEnumerable<GroupB_A2.Models.Business>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="container">
+    <h4 class="text-center">Business Phone Directory</h4>
+    <br/>
+    <div class="row"><a asp-controller="Business" asp-action="Create"  title="Add New"><img class="list-icon" src="Images/Icons/icons8-plus-64.png" alt=""/>
+                                             </a></div>
+    <table class="table table-striped">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Number Phone</th>
+            <th scope="col">Website</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @{
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td class="lead">@item.Name</td>
+                    <td class="lead">@item.Category.Name</td>
+                    <td class="lead">@item.NumberPhone</td>
+                    <td class="lead"><a href="@item.Website" target="_blank">@item.Website <img src="Images/Icons/icons8-external-link-16.png" title="Cancel"/></a></td>
+                    <td class="lead text-center">
+                        <a asp-controller="Business" asp-action="Details" asp-route-id="@item.ID" title="Details"><img class="list-icon" src="Images/Icons/icons8-details-64.png" alt=""/>
+                        </a>
+                        <a asp-controller="Business" asp-action="Edit" asp-route-id="@item.ID" title="Edit"><img class="list-icon" src="Images/Icons/icons8-edit-64.png" alt=""/></a>
+                        <a asp-controller="Business" asp-action="Delete" asp-route-id="@item.ID" title="Delete"><img class="list-icon" src="Images/Icons/icons8-trash-can-64.png" alt=""/></a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+</div>

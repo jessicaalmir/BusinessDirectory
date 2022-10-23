@@ -1,0 +1,64 @@
+@model GroupB_A2.Models.Business
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h4 class="text-center">Business Delete</h4>
+<hr />
+<div class="row"><a asp-controller="Business" asp-action="Index"  title="Back to List"><img class="list-icon" src="/Images/Icons/icons8-back-64.png" alt=""/>
+                                             </a></div>
+<div class="row">
+    <div class="col-md-4 text-center">
+        @using (Html.BeginForm("Delete", "Business", FormMethod.Post,new{name ="form1"}))
+        {
+            <div class="container text-danger">
+                @Html.ValidationSummary(false)
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Name)
+                </div>
+                <div class="col-lg-6">
+                    @Html.DisplayFor(b => b.Name, new { @class = "form-control", disabled="true" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Category,"Category")
+                </div>
+                <div class="col-lg-6">
+                     @Html.DisplayFor(b => b.Category.Name, new { @class ="form-control", disabled="true" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.NumberPhone, "Phone")
+                </div>
+                <div class="col-lg-6">
+                    @Html.DisplayFor(b => b.NumberPhone, new { @class ="form-control", disabled="true" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-4">
+                    @Html.LabelFor(b => b.Website)
+                </div>
+                <div class="col-lg-6">
+                    @Html.DisplayFor(b => b.Website, new { @class ="form-control", disabled="true" })
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <h5>Are you sure you want to delete this?</h5>
+            </div>
+            <br/>
+            <div class="form-group">
+                <a onclick="document.forms['form1'].submit();"><img src="/Images/Icons/icons8-delete-64.png" title="Delete"/></a>
+                <a asp-action="Index"><img src="/Images/Icons/icons8-cancel-64.png" title="Cancel"/></a>
+            </div>
+        }
+    </div>
+</div>
